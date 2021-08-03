@@ -12,7 +12,7 @@ export default{
     },
     getters:{
         reviewCount(state /* , getters, rootState */){
-            return state.reviews.lenth
+            return state.reviews.length
         }
     },
     actions:{
