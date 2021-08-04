@@ -3,8 +3,11 @@
 <div id="app">
     <h1>Welcome{{ userId }}</h1>
     <!-- $store.state.user.userId -> userId -->
-    <input v-model="newId" type="text"><button @click="saveUserId">Save</button><br>
-    <button @click="updateReviews">Update</button>
+    <v-text-field label="new user id" v-model="newId"></v-text-field>
+    <v-btn @click="saveUserId" elevation="2">Save </v-btn>
+    <v-btn @click="updateReviews" color="primary">Update</v-btn>
+  
+
     <h1>{{reviewCount}}</h1>
     <!-- $store.getters[reviews/reviewCount] -> reviewCount -->
     <!-- 근데 어떻게 store.js와 구분하는지-->
@@ -30,11 +33,8 @@
             </tr>
         </tbody>
         </template>
-
     </v-simple-table>
-     <v-app id="inspire">
-   
-
+     <v-app id="inspire"></v-app>
     </div>
 </template>
 
@@ -54,10 +54,12 @@ export default{
         ...mapState('reviews',{
             reviews:state=>state.reviews
         }),
+        //reivews.js의 State를 가져오는 애임.
         ...mapGetters('reviews',['reviewCount'])
     }, 
     methods:{
         ...mapMutations(['updateUserId']), 
+        //namespaced:true 설정 안해놓은 경우
         ...mapActions('reviews',['getReviews']),
         saveUserId(){
             this.updateUserId(this.newId)

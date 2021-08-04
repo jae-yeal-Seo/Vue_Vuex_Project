@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default{
-    namesapaced:true,
+    namespaced:true,
     state:()=>({
         reviews:[]
     }),
